@@ -1,0 +1,7 @@
+.dashboard-shell { display: flex; min-height: 100vh; }
+.dashboard-main { flex: 1; min-width: 0; }
+
+@media (max-width: 860px) {
+  /* leave room for the fixed bottom tab bar so content isn't hidden under it */
+  .dashboard-main main { padding-bottom: 78px; }
+}

@@ -1,0 +1,24 @@
+.topbar {
+  height: var(--topbar-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; border-bottom: 1px solid var(--border);
+  background: var(--surface); position: sticky; top: 0; z-index: 20;
+}
+.topbar-title { font-size: 13.5px; font-weight: 600; color: var(--text-muted); }
+.topbar-actions { display: flex; align-items: center; gap: 14px; }
+.topbar-user { display: flex; align-items: center; gap: 8px; }
+.topbar-avatar {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--ink-0); color: var(--paper-0);
+  font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
+.topbar-email { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.topbar-logout {
+  width: 32px; height: 32px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.topbar-logout:hover { background: var(--surface-sunken); color: var(--text); }
+
+@media (max-width: 640px) {
+  .topbar { padding: 0 14px; }
+  .topbar-email { display: none; }
+}

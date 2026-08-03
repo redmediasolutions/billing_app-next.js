@@ -1,0 +1,233 @@
+/* =========================================================================
+   Billing ERP — Design tokens & base styles
+   Palette: ink black / paper white, one restrained signal accent per state.
+   Type: Inter (UI) + IBM Plex Mono (amounts, codes, references) — the mono
+   figures are the signature: every price, quantity and invoice # sits in
+   tabular-mono type so the product reads like a ledger, not a generic admin.
+   ========================================================================= */
+
+:root {
+  /* Core ink/paper scale */
+  --ink-0: #0a0a0b;
+  --ink-1: #17181a;
+  --ink-2: #232427;
+  --ink-3: #34363a;
+  --ink-4: #4b4d52;
+  --ink-5: #6b6e74;
+  --ink-6: #9497a0;
+  --paper-0: #ffffff;
+  --paper-1: #fafafa;
+  --paper-2: #f2f2f3;
+  --paper-3: #e7e7e9;
+  --paper-4: #d8d9db;
+
+  /* Semantic */
+  --bg: var(--paper-1);
+  --surface: var(--paper-0);
+  --surface-sunken: var(--paper-2);
+  --border: var(--paper-4);
+  --border-strong: var(--ink-3);
+  --text: var(--ink-0);
+  --text-muted: var(--ink-5);
+  --text-faint: var(--ink-6);
+  --accent: var(--ink-0);
+  --accent-contrast: var(--paper-0);
+
+  --success: #146c43;
+  --success-bg: #e8f4ee;
+  --danger: #b3261e;
+  --danger-bg: #fbeae9;
+  --warning: #8a5a00;
+  --warning-bg: #fbf0dc;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(10, 10, 11, 0.06);
+  --shadow-md: 0 4px 16px rgba(10, 10, 11, 0.08);
+  --shadow-lg: 0 12px 32px rgba(10, 10, 11, 0.14);
+
+  --font-sans: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+
+  --sidebar-w: 236px;
+  --topbar-h: 60px;
+}
+
+.dark-surface {
+  --bg: var(--ink-0);
+  --surface: var(--ink-1);
+  --surface-sunken: var(--ink-2);
+  --border: var(--ink-3);
+  --border-strong: var(--paper-4);
+  --text: var(--paper-0);
+  --text-muted: var(--ink-6);
+  --text-faint: var(--ink-5);
+  --accent: var(--paper-0);
+  --accent-contrast: var(--ink-0);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+::selection { background: var(--ink-0); color: var(--paper-0); }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.amount { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Focus ring — accessible, visible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--ink-0);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- minimal layout utilities (hand-authored, not a framework) ---- */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1 1 0%; }
+.grow { flex-grow: 1; }
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+.grid { display: grid; }
+.w-full { width: 100%; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-muted { color: var(--text-muted); }
+.text-faint { color: var(--text-faint); }
+.text-sm { font-size: 12.5px; }
+.text-xs { font-size: 11px; }
+.text-lg { font-size: 17px; }
+.text-xl { font-size: 22px; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.06em; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.divider { height: 1px; background: var(--border); border: none; margin: 0; }
+.scroll-y { overflow-y: auto; }
+
+.container-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px 64px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-title {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 3px;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+@media (max-width: 860px) {
+  .container-page { padding: 18px 16px 48px; }
+  :root { --sidebar-w: 0px; }
+}
+
+/* Item form price block */
+.price-block {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+.sync-toggle {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; color: var(--text-muted); cursor: pointer;
+}
+.sync-toggle input { accent-color: var(--ink-0); width: 14px; height: 14px; }
+
+/* Item thumb in tables */
+.item-thumb {
+  width: 36px; height: 36px; border-radius: 6px; object-fit: cover; background: var(--surface-sunken);
+  border: 1px solid var(--border); flex-shrink: 0;
+}
+.item-thumb-placeholder {
+  width: 36px; height: 36px; border-radius: 6px; background: var(--surface-sunken);
+  border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); flex-shrink: 0;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 56px 20px; color: var(--text-muted);
+}
+.empty-state-icon {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--surface-sunken);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--text-faint);
+}
+.empty-state-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+
+/* Stat cards */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 16px 18px; box-shadow: var(--shadow-sm);
+}
+.stat-card-label { font-size: 11.5px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-card-value { font-size: 24px; font-weight: 700; margin-top: 6px; font-family: var(--font-mono); }
+.stat-card-sub { font-size: 12px; color: var(--text-faint); margin-top: 4px; }
+
+@media print {
+  .sidebar, .topbar, .no-print { display: none !important; }
+  .dashboard-shell, .dashboard-main { display: block !important; }
+  body { background: #fff; }
+}
+
+/* Small phones: stack side-by-side form rows and headers instead of
+   letting them get crushed. Targets the shared "flex gap-2/3/4" rows
+   used throughout dialogs, tables and page headers. */
+@media (max-width: 480px) {
+  .dialog-panel .flex:not(.cart-line):not(.picker-thumb) { flex-wrap: wrap; }
+  .dialog-panel .field-group[style*="width"] { width: 100% !important; }
+  .page-header { align-items: flex-start; }
+  .card-header .flex.items-center.justify-between { flex-wrap: wrap; gap: 10px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .report-card-head { flex-wrap: wrap; gap: 10px; }
+}
+
+.scroll-x { overflow-x: auto; }
+.text-left { text-align: left; }

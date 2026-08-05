@@ -4,27 +4,28 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "opennextjs-cloudflare build",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "lint": "next lint",
-    "preview": "opennextjs-cloudflare build && wrangler dev",
-    "deploy": "opennextjs-cloudflare build && wrangler deploy"
-
+    "start": "next start"
   },
   "dependencies": {
-    "next": "14.2.35",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "firebase": "^10.14.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.446.0",
-    "date-fns": "^3.6.0",
-    "recharts": "^2.12.7"
+    "date-fns": "^4.1.0",
+    "firebase": "^12.2.1",
+    "lucide-react": "^0.540.0",
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "recharts": "^3.2.1"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
-    "@types/node": "^20.16.10",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0"
+    "@opennextjs/cloudflare": "^1.20.2",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.118.0"
   }
 }
